@@ -39,6 +39,10 @@ RUN apt-get update && apt-get install -y \
 # setup entrypoint
 COPY ./ros_entrypoint.sh /
 
+# Install python requirements
+COPY ./requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+
 # Expose ports
 EXPOSE 8888
 EXPOSE 4567
